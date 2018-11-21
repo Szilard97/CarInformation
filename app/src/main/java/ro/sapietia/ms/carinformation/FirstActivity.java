@@ -16,7 +16,7 @@ public class FirstActivity extends AppCompatActivity {
             public void run(){
                 try {
 
-                    sleep(3*1000);
+                    sleep(1*1000);
                     Intent i = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(i);
 

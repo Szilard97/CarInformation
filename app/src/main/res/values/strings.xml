@@ -4,4 +4,8 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_confirm">ConfirmActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_terms_and_conditions">TermsAndConditions</string>
+    <string name="terms_conditions_confirmActivity"><![CDATA[Terms & Conditions]]></string>
+    <string name="textviewTermsAndConditions">1880-ban alakult meg az első "jeges" egyesület Csíkban, a Csíkszeredai Korcsolyázó Egylet, melyet 1881-ben jegyeztek be. </string>
+
 </resources>

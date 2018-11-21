@@ -14,7 +14,7 @@ public class ConfirmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm);
 
-        button=findViewById(R.id.goToMainActivity);
+        button=findViewById(R.id.buttonConfirmActivity);
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override

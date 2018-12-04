@@ -7,5 +7,14 @@
     <string name="title_activity_terms_and_conditions">TermsAndConditions</string>
     <string name="terms_conditions_confirmActivity"><![CDATA[Terms & Conditions]]></string>
     <string name="textviewTermsAndConditions">1880-ban alakult meg az első "jeges" egyesület Csíkban, a Csíkszeredai Korcsolyázó Egylet, melyet 1881-ben jegyeztek be. </string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="mainActivity_toolbar_title">Car Information</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

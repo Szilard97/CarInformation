@@ -3,7 +3,6 @@ package ro.sapietia.ms.carinformation.Activity.Activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,10 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import ro.sapietia.ms.carinformation.Activity.Fragment.AboutFragment;
-import ro.sapietia.ms.carinformation.Activity.Fragment.LogOutFragment;
-import ro.sapietia.ms.carinformation.Activity.Fragment.ProfileFragment;
-import ro.sapietia.ms.carinformation.Activity.Fragment.SettingsFragment;
 import ro.sapietia.ms.carinformation.R;
 
 public class MainActivity extends AppCompatActivity
@@ -67,67 +62,42 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        switch(id){
-            case R.id.about:{
-                fragment = getSupportFragmentManager().findFragmentByTag("AboutFragment");
+        switch(item.getItemId()){
 
-                if (fragment == null){
-                    fragment = new AboutFragment();
+            // Navigate to Interests
+            case R.id.about:
+                try {
+                    ActivityNavigation.navigateToAbout(MainActivity.this);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-                loadFragment(fragment);
-                return true;
-            }
-        }
+                break;
 
-        switch(id){
-            case R.id.garage:{
-                return true;
-            }
-
-        }
-
-        switch (id){
-            case R.id.logout:{
-
-                fragment = getSupportFragmentManager().findFragmentByTag("LogOutFragment");
-
-                if (fragment == null){
-                fragment = new LogOutFragment();
+            case R.id.profile:
+                try{
+                    ActivityNavigation.navigateToProfile(MainActivity.this);
+                } catch (Exception e){
+                    e.printStackTrace();
                 }
-                loadFragment(fragment);
-                return true;
-            }
-        }
-        switch(id){
-            case R.id.profile:{
-                fragment = getSupportFragmentManager().findFragmentByTag("ProfileFragment");
+                break;
 
-                if (fragment == null){
-                    fragment = new ProfileFragment();
+            case R.id.logout:
+                try{
+                    ActivityNavigation.navigateToLogout(MainActivity.this);
+                } catch (Exception e){
+                    e.printStackTrace();
                 }
-                loadFragment(fragment);
-                return true;
-            }
-        }
-        switch(id){
-            case R.id.settings:{
-                fragment = getSupportFragmentManager().findFragmentByTag("SettingsFragment");
-
-                if (fragment == null){
-                    fragment = new SettingsFragment();
+                break;
+            case R.id.settings:
+                try{
+                    ActivityNavigation.navigateToSettings(MainActivity.this);
+                } catch (Exception e){
+                    e.printStackTrace();
                 }
-                loadFragment(fragment);
-                return true;
-            }
+                break;
         }
-        return true;
-    }
 
-    private void loadFragment(Fragment fragment){
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_main, fragment, fragment.getClass().getSimpleName());
-        ft.commit();
+    return true;
     }
 }

@@ -34,7 +34,10 @@
         <activity
             android:name=".Activity.Activity.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.Activity.ProfileActivity" />
+        <activity android:name=".Activity.Activity.SettingsActivity" />
+        <activity android:name=".Activity.Activity.AboutActivity"></activity>
     </application>
 
 </manifest>

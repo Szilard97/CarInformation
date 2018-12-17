@@ -1,5 +1,6 @@
 package ro.sapietia.ms.carinformation.Activity.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -7,20 +8,45 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import java.util.ArrayList;
 
 import ro.sapietia.ms.carinformation.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private RecyclerView recyclerView;
     private Fragment fragment;
+    Button buttonAddItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        buttonAddItem = findViewById(R.id.buttonAddMainActivity);
+
+        buttonAddItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getApplicationContext(), AddItemActivity.class);
+                startActivity(i);
+            }
+        });
+
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(new MyAdapter(this, getData()));
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -32,6 +58,34 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+        }
+
+    private ArrayList getData() {
+
+        ArrayList<Car> cars = new ArrayList<>();
+
+        Car car = new Car();
+
+
+        car.setName("Opel");
+        car.setImage(R.drawable.pic1);
+        cars.add(car);
+
+        car = new Car();
+        car.setName("Audi");
+        car.setImage(R.drawable.pic2);
+        cars.add(car);
+
+        car = new Car();
+        car.setName("Mustang");
+        car.setImage(R.drawable.pic3);
+        cars.add(car);
+
+        return  cars;
+
     }
 
     @Override
@@ -46,9 +100,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -59,7 +110,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
@@ -68,7 +118,7 @@ public class MainActivity extends AppCompatActivity
             // Navigate to Interests
             case R.id.about:
                 try {
-                    ActivityNavigation.navigateToAbout(MainActivity.this);
+                    NavigationActivity.navigateToAbout(MainActivity.this);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -76,7 +126,7 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.profile:
                 try{
-                    ActivityNavigation.navigateToProfile(MainActivity.this);
+                    NavigationActivity.navigateToProfile(MainActivity.this);
                 } catch (Exception e){
                     e.printStackTrace();
                 }
@@ -84,14 +134,14 @@ public class MainActivity extends AppCompatActivity
 
             case R.id.logout:
                 try{
-                    ActivityNavigation.navigateToLogout(MainActivity.this);
+                    NavigationActivity.navigateToLogout(MainActivity.this);
                 } catch (Exception e){
                     e.printStackTrace();
                 }
                 break;
             case R.id.settings:
                 try{
-                    ActivityNavigation.navigateToSettings(MainActivity.this);
+                    NavigationActivity.navigateToSettings(MainActivity.this);
                 } catch (Exception e){
                     e.printStackTrace();
                 }

@@ -24,8 +24,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 Intent i = new Intent(getApplicationContext(), ConfirmActivity.class);
                 startActivity(i);
             }

@@ -2,8 +2,9 @@ package ro.sapietia.ms.carinformation.Activity.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 
-public class ActivityNavigation {
+public class NavigationActivity {
 
     public static void navigateToProfile(Context context) {
 
@@ -25,4 +26,11 @@ public class ActivityNavigation {
 
         context.startActivity(new Intent(context, FirstActivity.class ));
     }
+
+    public static void navigateToAddItem(final Context context) {
+
+        context.startActivity( new Intent(context, AddItemActivity.class));
+    }
+
+
 }

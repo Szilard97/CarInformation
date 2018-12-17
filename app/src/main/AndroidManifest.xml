@@ -37,7 +37,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.Activity.ProfileActivity" />
         <activity android:name=".Activity.Activity.SettingsActivity" />
-        <activity android:name=".Activity.Activity.AboutActivity"></activity>
+        <activity android:name=".Activity.Activity.AboutActivity" />
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/model" />
+
+        <activity android:name=".Activity.Activity.AddItemActivity"></activity>
     </application>
 
 </manifest>

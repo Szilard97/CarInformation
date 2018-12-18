@@ -13,6 +13,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="mainActivity_toolbar_title">Car Information</string>
+    <string name="settings_choose_image">Select the source of the profile picture</string>
+    <string name="settings_gallery">Gallery</string>
+    <string name="settings_camera">Camera</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -9,13 +9,13 @@
     <EditText
         android:id="@+id/editDateInsuranceItemInformationActivity"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="date"
         android:hint="Insurance:"
+        android:inputType="date"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,7 +24,7 @@
 
     <EditText
         android:id="@+id/editDatePeriodicTechnicalReviews"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
@@ -41,13 +41,13 @@
     <EditText
         android:id="@+id/editDateVignette"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="date"
         android:hint="Vignette"
+        android:inputType="date"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -59,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Save"
@@ -67,22 +67,31 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewPhotoItemInformation" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ImageView
+        android:id="@+id/imageViewPhotoItemInformation"
+        android:layout_width="85dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="TODO"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintTop_toBottomOf="@+id/editDateVignette" />
+
+    <ImageView
+        android:id="@+id/imageViewAddPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDateVignette"
-        app:srcCompat="@drawable/ic_menu_camera" />
+        android:src="@drawable/ic_menu_camera"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewPhotoItemInformation"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewPhotoItemInformation"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageViewPhotoItemInformation"
+        app:layout_constraintTop_toTopOf="@+id/imageViewPhotoItemInformation"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

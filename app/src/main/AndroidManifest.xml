@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ro.sapietia.ms.carinformation">
 
+    <uses-permission android:name="android.perission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.perission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity
             android:name=".Activity.Activity.Login.FirstActivity"
             android:label="@string/app_name"
@@ -45,6 +50,10 @@
 
         <activity android:name=".Activity.Activity.Main.AddItemActivity" />
         <activity android:name=".Activity.Activity.Main.ItemInformation"></activity>
+
     </application>
 
+    <uses-feature android:name="android.hardware.camera" android:required="false">
+
+    </uses-feature>
 </manifest>

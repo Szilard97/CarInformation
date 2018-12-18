@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                NavigationActivity.navigateToConfirm(getApplicationContext());
+                NavigationActivity.navigateToMain(getApplicationContext());
             }
         });
 

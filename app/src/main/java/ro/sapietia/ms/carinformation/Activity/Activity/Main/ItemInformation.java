@@ -7,33 +7,35 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import ro.sapietia.ms.carinformation.R;
 
-public class ItemInformation extends Activity implements View.OnClickListener {
+public class ItemInformation extends Activity //implements View.OnClickListener
+{
 
-    private ImageView profile_image;
+    /*private ImageView profile_image;
     private ImageView camera;
 
     private String userChoosenTask;
     private int REQUEST_CAMERA= 0, SELECT_FILE = 1;
+
+    private FirebaseAuth mAuth;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try{
             setContentView(R.layout.activity_item_information);
-            setUI();
-            seUITEXT();
+            //setUI();
+            //seUITEXT();
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private void seUITEXT() {
+    /*private void seUITEXT() {
     }
 
     private void setUI(){
@@ -94,5 +96,5 @@ public class ItemInformation extends Activity implements View.OnClickListener {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, REQUEST_CAMERA);
-    }
+    }*/
 }

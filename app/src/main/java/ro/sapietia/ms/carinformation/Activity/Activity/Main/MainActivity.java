@@ -1,5 +1,6 @@
 package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 import ro.sapietia.ms.carinformation.R;
@@ -25,11 +28,21 @@ public class MainActivity extends AppCompatActivity
     private Fragment fragment;
     Button buttonAddItem;
 
+    //ArrayList<Car> vehicles1;
+    ArrayList<Vehicle> vehicles;
+
+    String s = AddItemActivity.class.toString();
+
+    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth = FirebaseAuth.getInstance();
 
+        /*Bundle bundel = getIntent().getExtras();
+        vehicles1 = (ArrayList<Car>) bundel.getSerializable("vehicles");*/
         buttonAddItem = findViewById(R.id.buttonAddMainActivity);
 
         buttonAddItem.setOnClickListener(new View.OnClickListener() {
@@ -63,26 +76,22 @@ public class MainActivity extends AppCompatActivity
 
     private ArrayList getData() {
 
-        ArrayList<Car> cars = new ArrayList<>();
+        /*Car car;
 
-        Car car = new Car();
+        car = new Car("Opel", "Astra");
 
-
-        car.setName("Opel");
         car.setImage(R.drawable.pic1);
-        cars.add(car);
+        vehicles.add(car);
 
-        car = new Car();
-        car.setName("Audi");
+        car = new Car("Audi", "A4");
         car.setImage(R.drawable.pic2);
-        cars.add(car);
+        vehicles.add(car);
 
-        car = new Car();
-        car.setName("Mustang");
+        car = new Car("Ford","Mustang");
         car.setImage(R.drawable.pic3);
-        cars.add(car);
+        vehicles.add(car);*/
 
-        return  cars;
+        return  vehicles;
 
     }
 
@@ -149,3 +158,4 @@ public class MainActivity extends AppCompatActivity
     return true;
     }
 }
+

@@ -1,6 +1,5 @@
-package ro.sapietia.ms.carinformation.Activity.Activity;
+package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -37,8 +36,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                Intent i = new Intent(getApplicationContext(), AddItemActivity.class);
-                startActivity(i);
+                NavigationActivity.navigateToAddItem(getApplicationContext());
             }
         });
 

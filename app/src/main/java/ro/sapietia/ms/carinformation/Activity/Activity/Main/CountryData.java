@@ -1,4 +1,4 @@
-package ro.sapietia.ms.carinformation.Activity.Activity;
+package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
 public class CountryData {
     public static final String[] countryNames = { "Afghanistan", "Albania",

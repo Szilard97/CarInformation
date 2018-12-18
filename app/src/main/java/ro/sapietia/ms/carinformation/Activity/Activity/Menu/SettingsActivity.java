@@ -1,4 +1,4 @@
-package ro.sapietia.ms.carinformation.Activity.Activity;
+package ro.sapietia.ms.carinformation.Activity.Activity.Menu;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

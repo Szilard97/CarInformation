@@ -1,4 +1,4 @@
-package ro.sapietia.ms.carinformation.Activity.Activity;
+package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

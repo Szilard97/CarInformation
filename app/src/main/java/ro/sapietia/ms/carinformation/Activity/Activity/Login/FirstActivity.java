@@ -1,9 +1,9 @@
-package ro.sapietia.ms.carinformation.Activity.Activity;
+package ro.sapietia.ms.carinformation.Activity.Activity.Login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import ro.sapietia.ms.carinformation.Activity.Activity.Main.NavigationActivity;
 import ro.sapietia.ms.carinformation.R;
 
 public class FirstActivity extends AppCompatActivity {
@@ -19,8 +19,7 @@ public class FirstActivity extends AppCompatActivity {
                 try {
 
                     sleep(1*1000);
-                    Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(i);
+                    NavigationActivity.navigateToLogIn(getApplicationContext());
 
                 }
                 catch(Exception exception){

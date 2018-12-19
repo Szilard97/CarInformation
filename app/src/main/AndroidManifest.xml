@@ -29,7 +29,7 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activity.Activity.Login.ConfirmActivity"
+            android:name=".Activity.Activity.Login.RegistrationActivity"
             android:label="@string/title_activity_confirm"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import ro.sapietia.ms.carinformation.R;
@@ -34,6 +35,10 @@ public class AddItemActivity extends AppCompatActivity  implements AdapterView.O
     String brand;
     String model;
 
+    EditText editTextInsurance;
+    EditText editTextEditDatePeriodicTechnicalReviews;
+    EditText editDateVignette;
+
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -47,6 +52,9 @@ public class AddItemActivity extends AppCompatActivity  implements AdapterView.O
         categorySpinner = findViewById(R.id.spinnerCategoryAddCarActivity);
         modelSpinner = findViewById(R.id.spinnerModelAddCarActivity);
         brandSpinner = findViewById(R.id.spinnerBrandAddCarActivity);
+        editTextInsurance =findViewById(R.id.editDateInsuranceItemInformationActivity);
+        editTextEditDatePeriodicTechnicalReviews = findViewById(R.id.editDateInsuranceItemInformationActivity);
+        editDateVignette = findViewById(R.id.editDateVignette);
 
         createSpinnerCategory();
         categorySpinner.setOnItemSelectedListener(this);

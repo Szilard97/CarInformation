@@ -3,7 +3,7 @@ package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 import android.content.Context;
 import android.content.Intent;
 
-import ro.sapietia.ms.carinformation.Activity.Activity.Login.ConfirmActivity;
+import ro.sapietia.ms.carinformation.Activity.Activity.Login.RegistrationActivity;
 import ro.sapietia.ms.carinformation.Activity.Activity.Login.FirstActivity;
 import ro.sapietia.ms.carinformation.Activity.Activity.Login.LoginActivity;
 import ro.sapietia.ms.carinformation.Activity.Activity.Login.TermsAndConditions;
@@ -50,7 +50,7 @@ public class NavigationActivity {
 
     public static void navigateToConfirm(final Context context) {
 
-        context.startActivity( new Intent(context, ConfirmActivity.class));
+        context.startActivity( new Intent(context, RegistrationActivity.class));
     }
 
     public static void navigateToMain(final Context context) {

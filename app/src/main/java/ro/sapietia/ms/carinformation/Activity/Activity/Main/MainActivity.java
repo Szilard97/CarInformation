@@ -12,13 +12,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 import ro.sapietia.ms.carinformation.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
     ArrayList<Car> mCars;
 
     private RecyclerView mRecyclerView;
@@ -29,11 +32,19 @@ public class MainActivity extends AppCompatActivity
     String brand;
     String model;
 
+
+    DatabaseReference mDatabase;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("Test").setValue("gtcfktgcdlytcdlkytd");
 
         mCars = new ArrayList<>();
         buttonAddItem = findViewById(R.id.buttonAddMainActivity);
@@ -83,11 +94,7 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    /*private void createExampleList() {
-        mCars = new ArrayList<>();
-        mCars.add(new Car("Opel", "Astra", R.drawable.pic1));
-       //mCars.add(new Car("Audi", "A4", R.drawable.pic2));
-    }*/
+
 
     @Override
     public void onBackPressed() {
@@ -152,86 +159,3 @@ public class MainActivity extends AppCompatActivity
     return true;
     }
 }
-
-
-    /*
-    String category;
-    String brand;
-    String model;
-
-*brand1 = brand.getText().toString();
-                model1 = model.getText().toString();
-                inserItem(count, brand1, model1);
-                count +=1;
-                 NavigationActivity.navigateToAddItem(getApplicationContext());
-                 Bundle b = getIntent().getExtras();
-                 brand1 = b.getString("Brand");
-                 model1 = b.getString("Model");
-                 inserItem(count, brand1,mode1l);
-
-
-   ArrayList<Car> cars = null;
-   Car car = null;
-    private void listElements(String a, String b) {
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
-
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new MyAdapter(this, getData1(a, b)));
-    }
-
-    private ArrayList<Car> getData() {
-
-        if(cars == null){
-            cars = new ArrayList<>();
-        }
-        car = new Car("Opel", "Astra");
-        //car.setImage(R.drawable.pic1);
-        cars.add(car);
-
-        return  cars;
-    }
-    private ArrayList<Car> getData1(String name1, String name2) {
-
-        if(cars == null){
-            cars = new ArrayList<>();
-        }
-        car = new Car(name1, name2);
-        car.setImage(R.drawable.pic1);
-        cars.add(car);
-
-
-        return  cars;
-    }
-    RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
-
-        rv.setLayoutManager(new LinearLayoutManager(this));
-                rv.setAdapter(new MyAdapter(this, getData()));
-
-                Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-                setSupportActionBar(toolbar);
-
-                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-                drawer.addDrawerListener(toggle);
-                toggle.syncState();
-
-                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-                navigationView.setNavigationItemSelectedListener(this);
-
-
-                buttonAddItem = findViewById(R.id.buttonAddMainActivity);
-                buttonAddItem.setOnClickListener(new View.OnClickListener() {
-@Override
-public void onClick(View view) {
-
-        NavigationActivity.navigateToAddItem(getApplicationContext());
-        Bundle b = getIntent().getExtras();
-        category = b.getString("Category");
-        brand = b.getString("Brand");
-        model = b.getString("Model");
-        }
-        });*/
-
-
-

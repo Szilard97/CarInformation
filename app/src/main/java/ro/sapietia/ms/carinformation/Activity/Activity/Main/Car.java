@@ -1,6 +1,6 @@
 package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
-public class Car extends Vehicle {
+public class Car /*extends Vehicle*/ {
 
     String name;
     String brand;
@@ -8,11 +8,14 @@ public class Car extends Vehicle {
     int image;
 
 
+    public Car(){
 
+    }
 
-    public Car( String brand, String model) {
+    public Car( String brand, String model, int image) {
         this.brand = brand;
         this.model = model;
+        this.image = image;
         this.name = brand + model;
     }
 
@@ -41,12 +44,12 @@ public class Car extends Vehicle {
         this.model = model;
     }
 
-    @Override
+
     public int getImage() {
         return image;
     }
 
-    @Override
+
     public void setImage(int image) {
         this.image = image;
     }

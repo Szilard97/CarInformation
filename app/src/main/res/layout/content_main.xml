@@ -16,7 +16,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="446dp"
+            android:layout_height="441dp"
             android:scrollbars="vertical">
 
 
@@ -38,6 +38,37 @@
             android:textColor="@color/colorAccent"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+
+        <!--<EditText
+            android:id="@+id/Brand1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintStart_toEndOf="@+id/buttonAddMainActivity"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+            app:layout_constraintVertical_bias="0.034" />
+
+        <EditText
+            android:id="@+id/Model1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.179"
+            app:layout_constraintStart_toEndOf="@+id/buttonAddMainActivity"
+            app:layout_constraintTop_toBottomOf="@+id/Brand1" />-->
     </android.support.constraint.ConstraintLayout>
 
 </RelativeLayout>

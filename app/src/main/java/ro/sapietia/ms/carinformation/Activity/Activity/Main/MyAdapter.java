@@ -31,7 +31,7 @@ public class MyAdapter  extends RecyclerView.Adapter<MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int pozition){
 
-        Car s = cars.get(pozition);
+        Car s =cars.get(pozition);
 
         holder.nameTxt.setText(s.getName());
         holder.img.setImageResource(s.getImage() );

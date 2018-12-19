@@ -1,21 +1,16 @@
 package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
@@ -24,76 +19,75 @@ import ro.sapietia.ms.carinformation.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private RecyclerView recyclerView;
-    private Fragment fragment;
+    ArrayList<Car> mCars;
+
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
     Button buttonAddItem;
+    String category;
+    String brand;
+    String model;
 
-    //ArrayList<Car> vehicles1;
-    ArrayList<Vehicle> vehicles;
-
-    String s = AddItemActivity.class.toString();
-
-    private FirebaseAuth auth;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        auth = FirebaseAuth.getInstance();
 
-        /*Bundle bundel = getIntent().getExtras();
-        vehicles1 = (ArrayList<Car>) bundel.getSerializable("vehicles");*/
+        mCars = new ArrayList<>();
         buttonAddItem = findViewById(R.id.buttonAddMainActivity);
 
         buttonAddItem.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
-                NavigationActivity.navigateToAddItem(getApplicationContext());
+                Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
+                startActivityForResult(intent,1);
+
+
             }
         });
-
-        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
-
-        rv.setLayoutManager(new LinearLayoutManager(this));
-        rv.setAdapter(new MyAdapter(this, getData()));
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-
-
         }
 
-    private ArrayList getData() {
+    private void createList( String brand, String model) {
 
-        /*Car car;
+        mCars.add(new Car(brand, model, R.drawable.pic1));
+        buildRecyclerView();
+    }
 
-        car = new Car("Opel", "Astra");
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-        car.setImage(R.drawable.pic1);
-        vehicles.add(car);
+        if (requestCode ==1){
+            if(resultCode == RESULT_OK){
+                category = data.getStringExtra("Category");
+                brand = data.getStringExtra("Brand");
+                model = data.getStringExtra("Model");
+                createList(brand, model);
 
-        car = new Car("Audi", "A4");
-        car.setImage(R.drawable.pic2);
-        vehicles.add(car);
-
-        car = new Car("Ford","Mustang");
-        car.setImage(R.drawable.pic3);
-        vehicles.add(car);*/
-
-        return  vehicles;
+            }
+        }
 
     }
+
+    private void buildRecyclerView() {
+
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new MyAdapter(getApplicationContext(), mCars);
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    /*private void createExampleList() {
+        mCars = new ArrayList<>();
+        mCars.add(new Car("Opel", "Astra", R.drawable.pic1));
+       //mCars.add(new Car("Audi", "A4", R.drawable.pic2));
+    }*/
 
     @Override
     public void onBackPressed() {
@@ -158,4 +152,86 @@ public class MainActivity extends AppCompatActivity
     return true;
     }
 }
+
+
+    /*
+    String category;
+    String brand;
+    String model;
+
+*brand1 = brand.getText().toString();
+                model1 = model.getText().toString();
+                inserItem(count, brand1, model1);
+                count +=1;
+                 NavigationActivity.navigateToAddItem(getApplicationContext());
+                 Bundle b = getIntent().getExtras();
+                 brand1 = b.getString("Brand");
+                 model1 = b.getString("Model");
+                 inserItem(count, brand1,mode1l);
+
+
+   ArrayList<Car> cars = null;
+   Car car = null;
+    private void listElements(String a, String b) {
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(new MyAdapter(this, getData1(a, b)));
+    }
+
+    private ArrayList<Car> getData() {
+
+        if(cars == null){
+            cars = new ArrayList<>();
+        }
+        car = new Car("Opel", "Astra");
+        //car.setImage(R.drawable.pic1);
+        cars.add(car);
+
+        return  cars;
+    }
+    private ArrayList<Car> getData1(String name1, String name2) {
+
+        if(cars == null){
+            cars = new ArrayList<>();
+        }
+        car = new Car(name1, name2);
+        car.setImage(R.drawable.pic1);
+        cars.add(car);
+
+
+        return  cars;
+    }
+    RecyclerView rv = (RecyclerView) findViewById(R.id.recyclerView);
+
+        rv.setLayoutManager(new LinearLayoutManager(this));
+                rv.setAdapter(new MyAdapter(this, getData()));
+
+                Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+                setSupportActionBar(toolbar);
+
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                drawer.addDrawerListener(toggle);
+                toggle.syncState();
+
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+                navigationView.setNavigationItemSelectedListener(this);
+
+
+                buttonAddItem = findViewById(R.id.buttonAddMainActivity);
+                buttonAddItem.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+
+        NavigationActivity.navigateToAddItem(getApplicationContext());
+        Bundle b = getIntent().getExtras();
+        category = b.getString("Category");
+        brand = b.getString("Brand");
+        model = b.getString("Model");
+        }
+        });*/
+
+
 

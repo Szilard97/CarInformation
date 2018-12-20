@@ -5,6 +5,9 @@ public class Car /*extends Vehicle*/ {
     String name;
     String brand;
     String model;
+    String insurance;
+    String PTR;
+    String vignette;
     int image;
 
 
@@ -12,13 +15,15 @@ public class Car /*extends Vehicle*/ {
 
     }
 
-    public Car( String brand, String model, int image) {
+    public Car(String name, String brand, String model, String insurance, String PTR, String vignette, int image) {
+        this.name = name;
         this.brand = brand;
         this.model = model;
+        this.insurance = insurance;
+        this.PTR = PTR;
+        this.vignette = vignette;
         this.image = image;
-        this.name = brand + model;
     }
-
 
     public void setName(String name) {
         this.name = name;
@@ -52,5 +57,17 @@ public class Car /*extends Vehicle*/ {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public String getInsurance() {
+        return insurance;
+    }
+
+    public String getPTR() {
+        return PTR;
+    }
+
+    public String getVignette() {
+        return vignette;
     }
 }

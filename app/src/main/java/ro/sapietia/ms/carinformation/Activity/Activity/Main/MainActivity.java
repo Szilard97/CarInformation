@@ -11,13 +11,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
-
 import ro.sapietia.ms.carinformation.R;
 
 public class MainActivity extends AppCompatActivity
@@ -27,11 +26,16 @@ public class MainActivity extends AppCompatActivity
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    Button buttonAddItem;
-    String category;
-    String brand;
-    String model;
+    private Button buttonAddItem;
+    private String category;
+    private String brand;
+    private String model;
+    private String insurance;
+    private String PTR;
+    private String vignette;
 
+
+    private DatabaseReference databaseReference;
 
     DatabaseReference mDatabase;
     FirebaseAuth mAuth;
@@ -42,11 +46,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("Test").setValue("gtcfktgcdlytcdlkytd");
 
         mCars = new ArrayList<>();
+        createListSimpleList();
         buttonAddItem = findViewById(R.id.buttonAddMainActivity);
 
         buttonAddItem.setOnClickListener(new View.OnClickListener() {
@@ -56,14 +62,20 @@ public class MainActivity extends AppCompatActivity
                 Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
                 startActivityForResult(intent,1);
 
-
             }
         });
         }
 
-    private void createList( String brand, String model) {
+    private void createListSimpleList() {
 
-        mCars.add(new Car(brand, model, R.drawable.pic1));
+        mCars.add(new Car(brand+model , brand, model, insurance, PTR, vignette, R.drawable.pic1));
+        buildRecyclerView();
+    }
+
+
+    private void createList( String brand, String model, String insurance, String PTR, String vignette ) {
+
+        mCars.add(new Car(brand+model , brand, model, insurance, PTR, vignette, R.drawable.pic1));
         buildRecyclerView();
     }
 
@@ -76,11 +88,12 @@ public class MainActivity extends AppCompatActivity
                 category = data.getStringExtra("Category");
                 brand = data.getStringExtra("Brand");
                 model = data.getStringExtra("Model");
-                createList(brand, model);
-
+                insurance = data.getStringExtra("Insurance");
+                PTR = data.getStringExtra("PTR");
+                vignette = data.getStringExtra("Vignette");
+                createList(brand, model, insurance, PTR, vignette);
             }
         }
-
     }
 
     private void buildRecyclerView() {

@@ -11,11 +11,18 @@ public class MyViewHolder  extends RecyclerView.ViewHolder {
 
     TextView nameTxt;
     ImageView img;
+    TextView textViewInsurance;
+    TextView textViewPTR;
+    TextView textViewVignette;
+
 
     public MyViewHolder (View itemView){
         super(itemView);
 
         nameTxt = (TextView) itemView.findViewById(R.id.nameTxt);
         img = (ImageView) itemView.findViewById(R.id.picture);
+        textViewInsurance = itemView.findViewById(R.id.textViewIsuranceModelActivity);
+        textViewPTR = itemView.findViewById(R.id.textViewPTRModelActivity);
+        textViewVignette = itemView.findViewById(R.id.textViewVignetteModelActivity);
     }
 }

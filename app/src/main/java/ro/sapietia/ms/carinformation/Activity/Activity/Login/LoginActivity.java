@@ -16,19 +16,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import ro.sapietia.ms.carinformation.Activity.Activity.Main.MainActivity;
-import ro.sapietia.ms.carinformation.Activity.Activity.Main.NavigationActivity;
 import ro.sapietia.ms.carinformation.R;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button button;
     private FirebaseAuth mAuth;
     private EditText editTextEmail;
     private  EditText editTextPassword;
+    private EditText registeredEmail, registeredPassword;
     private Button buttonLogin;
     private Button buttonRegister;
     private String email, password;
+    private String emailRegistered, paswordRegistered;
 
 
     @Override
@@ -36,11 +36,17 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        initializeFields();
+        onClickListener();
 
-        editTextEmail = findViewById(R.id.email);
-        editTextPassword = findViewById(R.id.Password);
-        buttonRegister = findViewById(R.id.buttonRegistration);
-        buttonLogin = findViewById(R.id.buttonLogin);
+        mAuth = FirebaseAuth.getInstance();
+
+        if(mAuth.getCurrentUser() !=null){
+            mAuth.signOut();
+        }
+    }
+
+    private void onClickListener() {
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,42 +54,46 @@ public class LoginActivity extends AppCompatActivity {
 
                 email = editTextEmail.getText().toString();
                 password = editTextPassword.getText().toString();
-                //ellenorzes
 
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                if(!email.equals("") && !password.equals("")) {
 
-                        if(task.isSuccessful()){
-                            //sign in
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (task.isSuccessful()) {
+                                //sign in
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            } else {
+                                Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+                    });
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "Please enter email and password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
-        mAuth = FirebaseAuth.getInstance();
-
-        if(mAuth.getCurrentUser() !=null){
-            mAuth.signOut();
-        }
-
-        //button=findViewById(R.id.buttonContinueLoginActivity);
-        /*button.setOnClickListener(new View.OnClickListener() {
-
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                NavigationActivity.navigateToMain(getApplicationContext());
+                    Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
+                    startActivity(intent);
             }
-        });*/
+        });
+    }
 
+    private void initializeFields() {
+
+        editTextEmail = findViewById(R.id.email);
+        editTextPassword = findViewById(R.id.Password);
+        buttonRegister = findViewById(R.id.buttonRegistration);
+        buttonLogin = findViewById(R.id.buttonLogin);
+        registeredEmail = findViewById(R.id.EmailRegistration);
+        registeredPassword = findViewById(R.id.PaswordRegistration);
     }
 
     @Override

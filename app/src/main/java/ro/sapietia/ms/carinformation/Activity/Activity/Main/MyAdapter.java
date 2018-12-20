@@ -33,6 +33,9 @@ public class MyAdapter  extends RecyclerView.Adapter<MyViewHolder> {
 
         Car s =cars.get(pozition);
 
+        holder.textViewInsurance.setText(s.getInsurance());
+        holder.textViewVignette.setText(s.getVignette());
+        holder.textViewPTR.setText(s.getPTR());
         holder.nameTxt.setText(s.getName());
         holder.img.setImageResource(s.getImage() );
     }

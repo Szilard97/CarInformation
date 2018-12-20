@@ -12,9 +12,8 @@ import static ro.sapietia.ms.carinformation.R.layout.*;
 
 public class MyAdapter  extends RecyclerView.Adapter<MyViewHolder> {
 
-    Context c;
-
-    ArrayList<Car> cars;
+    private Context c;
+    private ArrayList<Car> cars;
 
     public MyAdapter (Context c, ArrayList<Car> cars){
 
@@ -45,4 +44,6 @@ public class MyAdapter  extends RecyclerView.Adapter<MyViewHolder> {
     public int getItemCount(){
         return  cars.size();
     }
+
+
 }

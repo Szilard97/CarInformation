@@ -15,7 +15,6 @@ public class MyViewHolder  extends RecyclerView.ViewHolder {
     TextView textViewPTR;
     TextView textViewVignette;
 
-
     public MyViewHolder (View itemView){
         super(itemView);
 

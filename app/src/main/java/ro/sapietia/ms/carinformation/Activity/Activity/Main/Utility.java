@@ -15,7 +15,7 @@ import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class Utility {
 
-    public static final int MY_PERMISSIONS_REQUST_READ_EXTERNAL_STORAGE = 123;
+    /*public static final int MY_PERMISSIONS_REQUST_READ_EXTERNAL_STORAGE = 123;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     public static boolean ChecPermissions(final Context context){
@@ -51,6 +51,6 @@ public class Utility {
                 return true;
             }
 
-        }
+        }*/
     }
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,11 +25,9 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText editTextEmail;
     private  EditText editTextPassword;
-    private EditText registeredEmail, registeredPassword;
     private Button buttonLogin;
     private Button buttonRegister;
     private String email, password;
-    private String emailRegistered, paswordRegistered;
 
 
     @Override
@@ -92,8 +91,6 @@ public class LoginActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.Password);
         buttonRegister = findViewById(R.id.buttonRegistration);
         buttonLogin = findViewById(R.id.buttonLogin);
-        registeredEmail = findViewById(R.id.EmailRegistration);
-        registeredPassword = findViewById(R.id.PaswordRegistration);
     }
 
     @Override
@@ -102,5 +99,15 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onStart();
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

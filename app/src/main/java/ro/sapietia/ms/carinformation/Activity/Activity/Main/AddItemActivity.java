@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,9 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import java.util.Calendar;
-
 import ro.sapietia.ms.carinformation.R;
 
 public class AddItemActivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
@@ -212,36 +211,6 @@ public class AddItemActivity extends AppCompatActivity  implements AdapterView.O
         modelSpinner.setAdapter(modelArrayAdapter);
     }
 
-    private void createSpinnerModelVolvo(){
-        ArrayAdapter<String> modelArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modelListVolvo);
-        modelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modelSpinner.setAdapter(modelArrayAdapter);
-    }
-
-    private void createSpinnerModelScania(){
-        ArrayAdapter<String> modelArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modelListScania);
-        modelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modelSpinner.setAdapter(modelArrayAdapter);
-    }
-
-    private void createSpinnerModelBMW(){
-        ArrayAdapter<String> modelArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modelListBMW);
-        modelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modelSpinner.setAdapter(modelArrayAdapter);
-    }
-
-    private void createSpinnerModelSuzuki(){
-        ArrayAdapter<String> modelArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modelListSuzuki);
-        modelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modelSpinner.setAdapter(modelArrayAdapter);
-    }
-
-    private void createSpinnerModelHarley(){
-        ArrayAdapter<String> modelArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modelListHarley);
-        modelArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modelSpinner.setAdapter(modelArrayAdapter);
-    }
-
     private void createSpinnerCategory() {
 
                 ArrayAdapter<String> categoryArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList);
@@ -282,10 +251,18 @@ public class AddItemActivity extends AppCompatActivity  implements AdapterView.O
         }
     }
 
-
-
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

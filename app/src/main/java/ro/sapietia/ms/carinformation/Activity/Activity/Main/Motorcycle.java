@@ -4,8 +4,7 @@ public class Motorcycle extends  Vehicle {
 
     String brand;
     String model;
-
-
+    
     public Motorcycle( String brand, String model) {
         this.brand = brand;
         this.model = model;

@@ -1,6 +1,6 @@
 package ro.sapietia.ms.carinformation.Activity.Activity.Main;
 
-public class Car /*extends Vehicle*/ {
+public class Car{
 
     String name;
     String brand;

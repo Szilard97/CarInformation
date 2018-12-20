@@ -8,26 +8,27 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+
 import ro.sapietia.ms.carinformation.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ArrayList<Car> mCars;
 
+    private ArrayList<Car> mCars;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Button buttonAddItem;
-    private String category;
     private String brand;
     private String model;
     private String insurance;
@@ -45,9 +46,6 @@ public class MainActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -61,17 +59,20 @@ public class MainActivity extends AppCompatActivity
 
                 Intent intent = new Intent(MainActivity.this, AddItemActivity.class);
                 startActivityForResult(intent,1);
-
             }
         });
-        }
+
+
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+    }
 
     private void createListSimpleList() {
 
         mCars.add(new Car("Opel Astra", "Opel", "Astra", "2019-12-01", "2019-08-21", "2019-04-30", R.drawable.pic1));
         buildRecyclerView();
     }
-
 
     private void createList( String brand, String model, String insurance, String PTR, String vignette ) {
 
@@ -85,7 +86,6 @@ public class MainActivity extends AppCompatActivity
 
         if (requestCode ==1){
             if(resultCode == RESULT_OK){
-                category = data.getStringExtra("Category");
                 brand = data.getStringExtra("Brand");
                 model = data.getStringExtra("Model");
                 insurance = data.getStringExtra("Insurance");
@@ -106,9 +106,6 @@ public class MainActivity extends AppCompatActivity
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
     }
-
-
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -145,14 +142,6 @@ public class MainActivity extends AppCompatActivity
                 }
                 break;
 
-            case R.id.profile:
-                try{
-                    NavigationActivity.navigateToProfile(MainActivity.this);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-                break;
-
             case R.id.logout:
                 try{
                     NavigationActivity.navigateToLogout(MainActivity.this);
@@ -160,15 +149,18 @@ public class MainActivity extends AppCompatActivity
                     e.printStackTrace();
                 }
                 break;
-            case R.id.settings:
-                try{
-                    NavigationActivity.navigateToSettings(MainActivity.this);
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-                break;
         }
 
     return true;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

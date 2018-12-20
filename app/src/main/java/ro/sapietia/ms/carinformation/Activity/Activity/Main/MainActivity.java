@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
 
     private void createListSimpleList() {
 
-        mCars.add(new Car(brand+model , brand, model, insurance, PTR, vignette, R.drawable.pic1));
+        mCars.add(new Car("Opel Astra", "Opel", "Astra", "2019-12-01", "2019-08-21", "2019-04-30", R.drawable.pic1));
         buildRecyclerView();
     }
 
